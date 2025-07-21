@@ -1,3 +1,5 @@
+importScripts('urls.js');
+
 const platforms = [
   { id: 'Linkedin', title: 'Search on LinkedIn' },
   { id: 'Github', title: 'Search on Github' },
@@ -6,26 +8,6 @@ const platforms = [
   { id: 'Google', title: 'Search on Google' },
   { id: 'Behance', title: 'Search on Behance' }
 ];
-
-function getSearchUrl(platform, query) {
-  const q = encodeURIComponent(query);
-  switch (platform) {
-    case 'Linkedin':
-      return `https://www.linkedin.com/search/results/people/?keywords=${q}`;
-    case 'Github':
-      return `https://github.com/search?type=Users&q=${q}`;
-    case 'MobyGames':
-      return `https://www.mobygames.com/search/quick?q=${q}`;
-    case 'ArtStation':
-      return `https://www.artstation.com/search/artists?sort_by=followers&query=${q}`;
-    case 'Google':
-      return `https://www.google.com/search?q=${q}`;
-    case 'Behance':
-      return `https://www.behance.net/search/users?search=${q}`;
-    default:
-      return '';
-  }
-}
 
 chrome.runtime.onInstalled.addListener(() => {
   platforms.forEach((platform) => {
