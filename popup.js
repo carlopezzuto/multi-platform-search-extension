@@ -1,41 +1,38 @@
+const defaultPlatforms = [
+  { name: "Linkedin", template: "https://www.linkedin.com/search/results/people/?keywords=%s" },
+  { name: "Github", template: "https://github.com/search?type=Users&q=%s" },
+  { name: "MobyGames", template: "https://www.mobygames.com/search/quick?q=%s" },
+  { name: "ArtStation", template: "https://www.artstation.com/search/artists?sort_by=followers&query=%s" },
+  { name: "Google", template: "https://www.google.com/search?q=%s" },
+  { name: "Behance", template: "https://www.behance.net/search/users?search=%s" },
+];
+
+let currentPlatforms = defaultPlatforms;
+
 // Generate the search URL for a platform
 function getSearchUrl(platform, query) {
-  const q = encodeURIComponent(query);
-  switch (platform) {
-    case "Linkedin":
-      return `https://www.linkedin.com/search/results/people/?keywords=${q}`;
-    case "Github":
-      return `https://github.com/search?type=Users&q=${q}`;
-    case "MobyGames":
-      return `https://www.mobygames.com/search/quick?q=${q}`;
-    case "ArtStation":
-      return `https://www.artstation.com/search/artists?sort_by=followers&query=${q}`;
-    case "Google":
-      return `https://www.google.com/search?q=${q}`;
-    case "Behance":
-      return `https://www.behance.net/search/users?search=${q}`;
-    default:
-      return "";
-  }
+  const cfg = currentPlatforms.find((p) => p.name === platform);
+  if (!cfg) return "";
+  return cfg.template.replace("%s", encodeURIComponent(query));
 }
 
 if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
-    // Platform button elements
-    const searchLinkedinButton = document.getElementById('searchLinkedin');
-    const searchGithubButton = document.getElementById('searchGithub');
-    const searchMobyGamesButton = document.getElementById('searchMobyGames');
-    const searchArtStationButton = document.getElementById('searchArtStation');
-    const searchGoogleButton = document.getElementById('searchGoogle');
-    const searchBehanceButton = document.getElementById('searchBehance');
+    chrome.storage.sync.get('platforms', (data) => {
+        currentPlatforms = data.platforms && data.platforms.length ? data.platforms : defaultPlatforms;
+        buildButtons();
+    });
 
-    // Add event listeners for the buttons
-    searchLinkedinButton.addEventListener('click', () => processSearch('Linkedin'));
-    searchGithubButton.addEventListener('click', () => processSearch('Github'));
-    searchMobyGamesButton.addEventListener('click', () => processSearch('MobyGames'));
-    searchArtStationButton.addEventListener('click', () => processSearch('ArtStation'));
-    searchGoogleButton.addEventListener('click', () => processSearch('Google'));
-    searchBehanceButton.addEventListener('click', () => processSearch('Behance'));
+    function buildButtons() {
+        const container = document.getElementById('searchOptions');
+        container.innerHTML = '';
+        currentPlatforms.forEach((p) => {
+            const btn = document.createElement('button');
+            btn.textContent = `Search on ${p.name}`;
+            btn.addEventListener('click', () => processSearch(p.name));
+            container.appendChild(btn);
+        });
+    }
 
     // Main function to process the search
     function processSearch(platform) {
@@ -145,5 +142,5 @@ function showSearchTips(platform) {
 
 // Export for testing environments
 if (typeof module !== "undefined") {
-  module.exports = { getSearchUrl };
+  module.exports = { getSearchUrl, defaultPlatforms };
 }

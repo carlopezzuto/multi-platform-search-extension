@@ -1,6 +1,7 @@
 ## Version 1.3
 - Improved design/layout
 - Corrected the Behance search functionality
+- Added an options page for customizing search platforms
 
 <img src="./screenshot2.png" alt="Extension Screenshot" width="50%" />
 
@@ -53,14 +54,9 @@ The search results for the selected text on the chosen platform will open in a n
 
 ## Customization
 
-To add a new source to the extension, follow these steps:
+Open the extension's **Options** page (right-click the extension icon and choose "Options" or open it from Chrome's extension manager). Use this page to add or remove platforms and define their search URLs. Use `%s` as a placeholder where the search query should be inserted. Your configuration is stored with `chrome.storage.sync` so it will follow you across devices.
 
-1. Find the specific search URL for the platform you want to add.
-2. Modify the `popup.js` file to include a new `else if` block for the new platform, using the search URL you found.
-3. Update the `popup.html` file to include a new button for the added platform.
-4. Update the event listener in the `popup.js` file to handle the new button's click event.
-
-Feel free to customize the extension to suit your specific needs and preferences. Please share and open source if you added more functionality!
+Feel free to customize the extension to suit your specific needs and preferences. Please share and open source if you add more functionality!
 
 ## Running Tests
 
