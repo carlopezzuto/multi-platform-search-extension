@@ -1,3 +1,6 @@
+## Version 1.4
+- Added context menu option for searching selected text on any platform
+
 ## Version 1.3
 - Improved design/layout
 - Corrected the Behance search functionality
@@ -31,6 +34,7 @@ This extension can be easily customized to add any source you want, as long as y
 - Search for selected text on multiple platforms
 - Bypass restrictions that prevent JavaScript bookmarklets from working on LinkedIn Recruiter
 - Easily customizable to add any additional source with its specific search URL
+- Quickly search directly from the right-click context menu
 
 ## How to Use
 
@@ -49,6 +53,8 @@ Click the extension's icon in the toolbar to open the popup. The popup will disp
 Choose the platform you want to search the selected text on by clicking the corresponding button in the popup. For example, if you want to search the selected text on LinkedIn, click the "Search on LinkedIn" button.
 
 The search results for the selected text on the chosen platform will open in a new window. You can then browse the search results to find the information you need.
+
+You can also right-click any highlighted text and choose a platform directly from the context menu to start a search without opening the popup.
 
 
 ## Customization
