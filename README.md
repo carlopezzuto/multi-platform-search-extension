@@ -62,9 +62,27 @@ You can also right-click any highlighted text and choose a platform directly fro
 To add a new source to the extension, follow these steps:
 
 1. Find the specific search URL for the platform you want to add.
-2. Modify the `popup.js` file to include a new `else if` block for the new platform, using the search URL you found.
+2. In `popup.js`, add the platform and its URL to the `PLATFORM_URLS` mapping.
 3. Update the `popup.html` file to include a new button for the added platform.
-4. Update the event listener in the `popup.js` file to handle the new button's click event.
+4. Register a click event listener in `popup.js` that calls `processSearch` with the new platform.
+
+Example: Adding **YouTube** support
+
+```javascript
+// popup.js
+const PLATFORM_URLS = {
+  // existing entries
+  YouTube: 'https://www.youtube.com/results?search_query=',
+};
+
+const searchYouTubeButton = document.getElementById('searchYouTube');
+searchYouTubeButton.addEventListener('click', () => processSearch('YouTube'));
+```
+
+```html
+<!-- popup.html -->
+<button id="searchYouTube">Search on YouTube</button>
+```
 
 Feel free to customize the extension to suit your specific needs and preferences. Please share and open source if you added more functionality!
 
