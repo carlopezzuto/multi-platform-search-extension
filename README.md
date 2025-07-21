@@ -66,6 +66,8 @@ To add a new source to the extension, follow these steps:
 3. Update the `popup.html` file to include a new button for the added platform.
 4. Register a click event listener in `popup.js` that calls `processSearch` with the new platform.
 
+Once a platform is added to `PLATFORM_URLS`, a matching context-menu option is automatically created. There is no need to manually update `background.js` for the right-click menu.
+
 Example: Adding **YouTube** support
 
 ```javascript
