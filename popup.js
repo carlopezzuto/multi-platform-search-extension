@@ -1,22 +1,16 @@
 // Generate the search URL for a platform
+const PLATFORM_URLS = {
+  Linkedin: 'https://www.linkedin.com/search/results/people/?keywords=',
+  Github: 'https://github.com/search?type=Users&q=',
+  MobyGames: 'https://www.mobygames.com/search/quick?q=',
+  ArtStation: 'https://www.artstation.com/search/artists?sort_by=followers&query=',
+  Google: 'https://www.google.com/search?q=',
+  Behance: 'https://www.behance.net/search/users?search=',
+};
+
 function getSearchUrl(platform, query) {
   const q = encodeURIComponent(query);
-  switch (platform) {
-    case "Linkedin":
-      return `https://www.linkedin.com/search/results/people/?keywords=${q}`;
-    case "Github":
-      return `https://github.com/search?type=Users&q=${q}`;
-    case "MobyGames":
-      return `https://www.mobygames.com/search/quick?q=${q}`;
-    case "ArtStation":
-      return `https://www.artstation.com/search/artists?sort_by=followers&query=${q}`;
-    case "Google":
-      return `https://www.google.com/search?q=${q}`;
-    case "Behance":
-      return `https://www.behance.net/search/users?search=${q}`;
-    default:
-      return "";
-  }
+  return PLATFORM_URLS[platform] ? `${PLATFORM_URLS[platform]}${q}` : '';
 }
 
 if (typeof document !== 'undefined') {
@@ -145,5 +139,5 @@ function showSearchTips(platform) {
 
 // Export for testing environments
 if (typeof module !== "undefined") {
-  module.exports = { getSearchUrl };
+  module.exports = { getSearchUrl, PLATFORM_URLS };
 }
