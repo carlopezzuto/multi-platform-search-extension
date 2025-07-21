@@ -56,7 +56,7 @@ The search results for the selected text on the chosen platform will open in a n
 To add a new source to the extension, follow these steps:
 
 1. Find the specific search URL for the platform you want to add.
-2. Modify the `popup.js` file to include a new case in the switch statement for the new platform, using the search URL you found.
+2. Modify the `popup.js` file to include a new `else if` block for the new platform, using the search URL you found.
 3. Update the `popup.html` file to include a new button for the added platform.
 4. Update the event listener in the `popup.js` file to handle the new button's click event.
 
