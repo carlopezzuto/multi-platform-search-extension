@@ -1,16 +1,11 @@
-// Generate the search URL for a platform
-const PLATFORM_URLS = {
-  Linkedin: 'https://www.linkedin.com/search/results/people/?keywords=',
-  Github: 'https://github.com/search?type=Users&q=',
-  MobyGames: 'https://www.mobygames.com/search/quick?q=',
-  ArtStation: 'https://www.artstation.com/search/artists?sort_by=followers&query=',
-  Google: 'https://www.google.com/search?q=',
-  Behance: 'https://www.behance.net/search/users?search=',
-};
+// Access shared search utilities
+let PLATFORM_URLS;
+let getSearchUrl;
 
-function getSearchUrl(platform, query) {
-  const q = encodeURIComponent(query);
-  return PLATFORM_URLS[platform] ? `${PLATFORM_URLS[platform]}${q}` : '';
+if (typeof module !== 'undefined' && module.exports) {
+  ({ PLATFORM_URLS, getSearchUrl } = require('./urls'));
+} else {
+  ({ PLATFORM_URLS, getSearchUrl } = globalThis);
 }
 
 if (typeof document !== 'undefined') {
@@ -138,6 +133,6 @@ function showSearchTips(platform) {
 }
 
 // Export for testing environments
-if (typeof module !== "undefined") {
-  module.exports = { getSearchUrl, PLATFORM_URLS };
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = require('./urls');
 }

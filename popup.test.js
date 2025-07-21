@@ -1,4 +1,4 @@
-const { getSearchUrl, PLATFORM_URLS } = require('./popup');
+const { getSearchUrl, PLATFORM_URLS } = require('./urls');
 
 describe('getSearchUrl', () => {
   const query = 'hello world';
