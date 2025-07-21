@@ -1,8 +1,11 @@
-const { getSearchUrl } = require('./popup');
+const { getSearchUrl, PLATFORM_URLS } = require('./popup');
 
 describe('getSearchUrl', () => {
-  test('generates Google search URL', () => {
-    const url = getSearchUrl('Google', 'hello world');
-    expect(url).toBe('https://www.google.com/search?q=hello%20world');
-  });
+  const query = 'hello world';
+  for (const [platform, baseUrl] of Object.entries(PLATFORM_URLS)) {
+    test(`generates ${platform} search URL`, () => {
+      const url = getSearchUrl(platform, query);
+      expect(url).toBe(`${baseUrl}${encodeURIComponent(query)}`);
+    });
+  }
 });
