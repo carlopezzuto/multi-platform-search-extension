@@ -1,6 +1,6 @@
 {
   "name": "multi-platform-search-extension",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "description": "Multi-platform search extension",
   "devDependencies": {
     "jest": "^29.7.0"
