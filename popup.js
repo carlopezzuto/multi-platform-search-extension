@@ -1,3 +1,25 @@
+// Generate the search URL for a platform
+function getSearchUrl(platform, query) {
+  const q = encodeURIComponent(query);
+  switch (platform) {
+    case "Linkedin":
+      return `https://www.linkedin.com/search/results/people/?keywords=${q}`;
+    case "Github":
+      return `https://github.com/search?type=Users&q=${q}`;
+    case "MobyGames":
+      return `https://www.mobygames.com/search/quick?q=${q}`;
+    case "ArtStation":
+      return `https://www.artstation.com/search/artists?sort_by=followers&query=${q}`;
+    case "Google":
+      return `https://www.google.com/search?q=${q}`;
+    case "Behance":
+      return `https://www.behance.net/search/users?search=${q}`;
+    default:
+      return "";
+  }
+}
+
+if (typeof document !== 'undefined') {
 document.addEventListener('DOMContentLoaded', () => {
     // Platform button elements
     const searchLinkedinButton = document.getElementById('searchLinkedin');
@@ -45,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return window.getSelection().toString();
     }
 
+
     // Function to handle the search form submission
     document.getElementById('searchForm').addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent form submission
@@ -59,20 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // Perform the search based on the platform
-        let url;
-        if (platform === 'Linkedin') {
-            url = 'https://www.linkedin.com/search/results/people/?keywords=' + encodeURIComponent(query);
-        } else if (platform === 'Github') {
-            url = 'https://github.com/search?type=Users&q=' + encodeURIComponent(query);
-        } else if (platform === 'MobyGames') {
-            url = 'https://www.mobygames.com/search/quick?q=' + encodeURIComponent(query);
-        } else if (platform === 'ArtStation') {
-            url = 'https://www.artstation.com/search/artists?sort_by=followers&query=' + encodeURIComponent(query);
-        } else if (platform === 'Google') {
-            url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-        } else if (platform === 'Behance') {
-            url = 'https://www.behance.net/search/users?search=' + encodeURIComponent(query);
-        }
+        const url = getSearchUrl(platform, query);
 
         // Open the search result in a new tab
         chrome.tabs.create({ url });
@@ -131,3 +141,9 @@ function showSearchTips(platform) {
   document.getElementById('searchTips').innerHTML = tips;
 }
 });
+}
+
+// Export for testing environments
+if (typeof module !== "undefined") {
+  module.exports = { getSearchUrl };
+}

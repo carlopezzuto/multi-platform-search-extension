@@ -61,3 +61,8 @@ To add a new source to the extension, follow these steps:
 4. Update the event listener in the `popup.js` file to handle the new button's click event.
 
 Feel free to customize the extension to suit your specific needs and preferences. Please share and open source if you added more functionality!
+
+## Running Tests
+
+1. Install dependencies with `npm install`.
+2. Execute `npm test` to run the Jest test suite.
