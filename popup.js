@@ -24,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }, (results) => {
                 if (results && results.length > 0 && results[0].result) {
                     // Set the selected text in the form input
-                    document.getElementById('queryInput').value = results[0].result;
+                    const queryField = document.getElementById('queryInput');
+                    queryField.value = results[0].result;
+                    queryField.focus();
 
                     // Save the selected platform
                     document.getElementById('platformInput').value = platform;
