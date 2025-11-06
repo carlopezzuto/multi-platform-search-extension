@@ -24,7 +24,9 @@
     "lint": "eslint *.js",
     "lint:fix": "eslint *.js --fix",
     "format": "prettier --write \"**/*.{js,json,css,html}\"",
-    "format:check": "prettier --check \"**/*.{js,json,css,html}\""
+    "format:check": "prettier --check \"**/*.{js,json,css,html}\"",
+    "build": "./build.sh",
+    "prebuild": "npm run lint && npm run format:check && npm test"
   },
   "keywords": [
     "chrome-extension",

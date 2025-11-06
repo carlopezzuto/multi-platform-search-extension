@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.contextMenus.create(
         {
           id: platform,
-          title: `${PLATFORM_CONFIG[platform].icon} Search on ${platform} "%s"`,
+          title: `Search on ${platform} "%s"`,
           contexts: ['selection']
         },
         () => {
