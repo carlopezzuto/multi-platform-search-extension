@@ -12,15 +12,18 @@ chrome.runtime.onInstalled.addListener(() => {
   try {
     // Create context menu items for each platform
     Object.keys(PLATFORM_CONFIG).forEach((platform) => {
-      chrome.contextMenus.create({
-        id: platform,
-        title: `${PLATFORM_CONFIG[platform].icon} Search on ${platform} "%s"`,
-        contexts: ['selection']
-      }, () => {
-        if (chrome.runtime.lastError) {
-          console.error(`Error creating context menu for ${platform}:`, chrome.runtime.lastError);
+      chrome.contextMenus.create(
+        {
+          id: platform,
+          title: `${PLATFORM_CONFIG[platform].icon} Search on ${platform} "%s"`,
+          contexts: ['selection']
+        },
+        () => {
+          if (chrome.runtime.lastError) {
+            console.error(`Error creating context menu for ${platform}:`, chrome.runtime.lastError);
+          }
         }
-      });
+      );
     });
 
     console.log('Multi-Platform Search Extension: Context menus created successfully');

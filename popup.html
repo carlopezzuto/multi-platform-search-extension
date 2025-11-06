@@ -1,46 +1,46 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Multi-Platform Search</title>
-  <link rel="stylesheet" href="popup.css">
-</head>
-<body>
-  <h1>Multi-Platform Search</h1>
+  <head>
+    <title>Multi-Platform Search</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <h1>Multi-Platform Search</h1>
 
-  <p>Select text and click a button to search on the corresponding platform:</p>
+    <p>Select text and click a button to search on the corresponding platform:</p>
 
-  <div id="searchOptions">
-    <button id="searchLinkedin">💼 LinkedIn</button>
-    <button id="searchGithub">🐙 GitHub</button>
-    <button id="searchStackOverflow">📚 Stack Overflow</button>
-    <button id="searchGoogle">🔍 Google</button>
-    <button id="searchTwitter">🐦 Twitter</button>
-    <button id="searchReddit">👽 Reddit</button>
-    <button id="searchYouTube">📺 YouTube</button>
-    <button id="searchMedium">📝 Medium</button>
-    <button id="searchBehance">🎭 Behance</button>
-    <button id="searchArtStation">🎨 ArtStation</button>
-    <button id="searchDeviantArt">🖼️ DeviantArt</button>
-    <button id="searchDribbble">🏀 Dribbble</button>
-    <button id="searchMobyGames">🎮 MobyGames</button>
-  </div>
+    <div id="searchOptions">
+      <button id="searchLinkedin">💼 LinkedIn</button>
+      <button id="searchGithub">🐙 GitHub</button>
+      <button id="searchStackOverflow">📚 Stack Overflow</button>
+      <button id="searchGoogle">🔍 Google</button>
+      <button id="searchTwitter">🐦 Twitter</button>
+      <button id="searchReddit">👽 Reddit</button>
+      <button id="searchYouTube">📺 YouTube</button>
+      <button id="searchMedium">📝 Medium</button>
+      <button id="searchBehance">🎭 Behance</button>
+      <button id="searchArtStation">🎨 ArtStation</button>
+      <button id="searchDeviantArt">🖼️ DeviantArt</button>
+      <button id="searchDribbble">🏀 Dribbble</button>
+      <button id="searchMobyGames">🎮 MobyGames</button>
+    </div>
 
-  <form id="searchForm">
-    <input type="text" id="queryInput" placeholder="Search query" />
-    <input type="hidden" id="platformInput" />
-    <label style="margin-top:10px;">
-      <input type="checkbox" id="quoteToggle" /> Use quotes
-    </label>
-    <button type="submit" style="margin-top:10px;">Search</button>
-  </form>
+    <form id="searchForm">
+      <input type="text" id="queryInput" placeholder="Search query" />
+      <input type="hidden" id="platformInput" />
+      <label style="margin-top: 10px">
+        <input type="checkbox" id="quoteToggle" /> Use quotes
+      </label>
+      <button type="submit" style="margin-top: 10px">Search</button>
+    </form>
 
-  <div id="searchTips"></div>
+    <div id="searchTips"></div>
 
-  <div class="powered-by">
-    Powered by <a href="https://www.absoluterecruiter.com" target="_blank">Absolute Recruiter</a>
-  </div>
+    <div class="powered-by">
+      Powered by <a href="https://www.absoluterecruiter.com" target="_blank">Absolute Recruiter</a>
+    </div>
 
-  <script src="urls.js"></script>
-  <script src="popup.js"></script>
-</body>
+    <script src="urls.js"></script>
+    <script src="popup.js"></script>
+  </body>
 </html>

@@ -57,11 +57,22 @@ describe('getSearchUrl', () => {
 describe('PLATFORM_URLS', () => {
   test('contains all expected platforms', () => {
     const expectedPlatforms = [
-      'Linkedin', 'Github', 'MobyGames', 'ArtStation', 'Google', 'Behance',
-      'StackOverflow', 'Twitter', 'Reddit', 'YouTube', 'Medium', 'DeviantArt', 'Dribbble'
+      'Linkedin',
+      'Github',
+      'MobyGames',
+      'ArtStation',
+      'Google',
+      'Behance',
+      'StackOverflow',
+      'Twitter',
+      'Reddit',
+      'YouTube',
+      'Medium',
+      'DeviantArt',
+      'Dribbble'
     ];
 
-    expectedPlatforms.forEach(platform => {
+    expectedPlatforms.forEach((platform) => {
       expect(PLATFORM_URLS).toHaveProperty(platform);
       expect(typeof PLATFORM_URLS[platform]).toBe('string');
       expect(PLATFORM_URLS[platform]).toMatch(/^https?:\/\//);
@@ -69,13 +80,13 @@ describe('PLATFORM_URLS', () => {
   });
 
   test('all URLs are HTTPS', () => {
-    Object.values(PLATFORM_URLS).forEach(url => {
+    Object.values(PLATFORM_URLS).forEach((url) => {
       expect(url).toMatch(/^https:\/\//);
     });
   });
 
   test('all URLs end with query parameter or search path', () => {
-    Object.values(PLATFORM_URLS).forEach(url => {
+    Object.values(PLATFORM_URLS).forEach((url) => {
       const hasQueryParam = url.includes('?') || url.includes('=');
       const hasSearchPath = url.includes('/search');
       expect(hasQueryParam || hasSearchPath).toBe(true);
@@ -85,7 +96,7 @@ describe('PLATFORM_URLS', () => {
 
 describe('PLATFORM_CONFIG', () => {
   test('contains configuration for all platforms', () => {
-    Object.keys(PLATFORM_URLS).forEach(platform => {
+    Object.keys(PLATFORM_URLS).forEach((platform) => {
       expect(PLATFORM_CONFIG).toHaveProperty(platform);
     });
   });
@@ -107,13 +118,13 @@ describe('PLATFORM_CONFIG', () => {
   });
 
   test('PLATFORM_CONFIG URLs match PLATFORM_URLS', () => {
-    Object.keys(PLATFORM_CONFIG).forEach(platform => {
+    Object.keys(PLATFORM_CONFIG).forEach((platform) => {
       expect(PLATFORM_CONFIG[platform].url).toBe(PLATFORM_URLS[platform]);
     });
   });
 
   test('all tips contain HTML formatting', () => {
-    Object.values(PLATFORM_CONFIG).forEach(config => {
+    Object.values(PLATFORM_CONFIG).forEach((config) => {
       expect(config.tips).toMatch(/<strong>|<br>/);
     });
   });

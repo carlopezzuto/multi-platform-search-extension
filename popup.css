@@ -30,7 +30,9 @@ button {
   text-shadow: 0 0 5px #00ffff;
   border-radius: 50px; /* Rounded buttons */
   outline: none;
-  transition: background-color 0.3s, color 0.3s;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
   margin: 5px;
   width: 150px; /* Set a fixed width for buttons */
 }
@@ -66,7 +68,9 @@ button.loading::after {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 #searchOptions {

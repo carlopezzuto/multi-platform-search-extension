@@ -1,108 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>Multi-Platform Search - Options</title>
-  <link rel="stylesheet" href="options.css">
-</head>
-<body>
-  <div class="container">
-    <h1>⚙️ Multi-Platform Search Settings</h1>
+  <head>
+    <title>Multi-Platform Search - Options</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>⚙️ Multi-Platform Search Settings</h1>
 
-    <div class="section">
-      <h2>Platform Settings</h2>
-      <p>Customize which platforms appear in your search extension and their order.</p>
+      <div class="section">
+        <h2>Platform Settings</h2>
+        <p>Customize which platforms appear in your search extension and their order.</p>
 
-      <div id="platformList" class="platform-list">
-        <!-- Platforms will be dynamically loaded here -->
+        <div id="platformList" class="platform-list">
+          <!-- Platforms will be dynamically loaded here -->
+        </div>
       </div>
+
+      <div class="section">
+        <h2>General Settings</h2>
+
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="closeAfterSearch" />
+            Close popup after search
+          </label>
+        </div>
+
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="showKeyboardShortcuts" />
+            Enable keyboard shortcuts (1-9 for platforms)
+          </label>
+        </div>
+
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="saveSearchHistory" />
+            Save search history
+          </label>
+        </div>
+
+        <div class="setting">
+          <label>
+            Max history entries:
+            <input type="number" id="maxHistoryEntries" min="5" max="100" value="20" />
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Appearance</h2>
+
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="showPlatformIcons" />
+            Show platform icons
+          </label>
+        </div>
+
+        <div class="setting">
+          <label>
+            Button layout:
+            <select id="buttonLayout">
+              <option value="grid">Grid</option>
+              <option value="list">List</option>
+              <option value="compact">Compact</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>Batch Search</h2>
+
+        <div class="setting">
+          <label>
+            <input type="checkbox" id="enableBatchSearch" />
+            Enable batch search (search multiple platforms at once)
+          </label>
+        </div>
+
+        <div class="setting">
+          <label>
+            Batch search behavior:
+            <select id="batchSearchBehavior">
+              <option value="tabs">Open in separate tabs</option>
+              <option value="window">Open in new window</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="saveSettings" class="btn-primary">💾 Save Settings</button>
+        <button id="resetSettings" class="btn-secondary">🔄 Reset to Defaults</button>
+        <button id="exportSettings" class="btn-secondary">📤 Export Settings</button>
+        <button id="importSettings" class="btn-secondary">📥 Import Settings</button>
+      </div>
+
+      <div id="notification" class="notification"></div>
     </div>
 
-    <div class="section">
-      <h2>General Settings</h2>
-
-      <div class="setting">
-        <label>
-          <input type="checkbox" id="closeAfterSearch" />
-          Close popup after search
-        </label>
-      </div>
-
-      <div class="setting">
-        <label>
-          <input type="checkbox" id="showKeyboardShortcuts" />
-          Enable keyboard shortcuts (1-9 for platforms)
-        </label>
-      </div>
-
-      <div class="setting">
-        <label>
-          <input type="checkbox" id="saveSearchHistory" />
-          Save search history
-        </label>
-      </div>
-
-      <div class="setting">
-        <label>
-          Max history entries:
-          <input type="number" id="maxHistoryEntries" min="5" max="100" value="20" />
-        </label>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Appearance</h2>
-
-      <div class="setting">
-        <label>
-          <input type="checkbox" id="showPlatformIcons" />
-          Show platform icons
-        </label>
-      </div>
-
-      <div class="setting">
-        <label>
-          Button layout:
-          <select id="buttonLayout">
-            <option value="grid">Grid</option>
-            <option value="list">List</option>
-            <option value="compact">Compact</option>
-          </select>
-        </label>
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>Batch Search</h2>
-
-      <div class="setting">
-        <label>
-          <input type="checkbox" id="enableBatchSearch" />
-          Enable batch search (search multiple platforms at once)
-        </label>
-      </div>
-
-      <div class="setting">
-        <label>
-          Batch search behavior:
-          <select id="batchSearchBehavior">
-            <option value="tabs">Open in separate tabs</option>
-            <option value="window">Open in new window</option>
-          </select>
-        </label>
-      </div>
-    </div>
-
-    <div class="actions">
-      <button id="saveSettings" class="btn-primary">💾 Save Settings</button>
-      <button id="resetSettings" class="btn-secondary">🔄 Reset to Defaults</button>
-      <button id="exportSettings" class="btn-secondary">📤 Export Settings</button>
-      <button id="importSettings" class="btn-secondary">📥 Import Settings</button>
-    </div>
-
-    <div id="notification" class="notification"></div>
-  </div>
-
-  <script src="urls.js"></script>
-  <script src="options.js"></script>
-</body>
+    <script src="urls.js"></script>
+    <script src="options.js"></script>
+  </body>
 </html>

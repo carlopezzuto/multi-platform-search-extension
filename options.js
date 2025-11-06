@@ -125,7 +125,9 @@ function togglePlatform(platform, enabled) {
       currentSettings.enabledPlatforms.push(platform);
     }
   } else {
-    currentSettings.enabledPlatforms = currentSettings.enabledPlatforms.filter(p => p !== platform);
+    currentSettings.enabledPlatforms = currentSettings.enabledPlatforms.filter(
+      (p) => p !== platform
+    );
   }
 
   // Update UI
@@ -151,7 +153,7 @@ function handleDragEnd(e) {
   e.currentTarget.classList.remove('dragging');
 
   // Remove all drag-over classes
-  document.querySelectorAll('.platform-item').forEach(item => {
+  document.querySelectorAll('.platform-item').forEach((item) => {
     item.classList.remove('drag-over');
   });
 }

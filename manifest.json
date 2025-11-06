@@ -3,13 +3,7 @@
   "name": "Multi-Platform Search Extension",
   "version": "2.0",
   "description": "Search selected text across 13+ platforms with history, keyboard shortcuts, and advanced features",
-  "permissions": [
-    "activeTab",
-    "tabs",
-    "scripting",
-    "contextMenus",
-    "storage"
-  ],
+  "permissions": ["activeTab", "tabs", "scripting", "contextMenus", "storage"],
   "background": {
     "service_worker": "background.js"
   },

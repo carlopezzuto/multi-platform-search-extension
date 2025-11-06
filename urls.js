@@ -1,5 +1,5 @@
 (function (global) {
-// Platform configuration with URLs, tips, and metadata
+  // Platform configuration with URLs, tips, and metadata
   const PLATFORM_CONFIG = {
     Linkedin: {
       url: 'https://www.linkedin.com/search/results/people/?keywords=',
@@ -122,16 +122,16 @@
 
   // Legacy PLATFORM_URLS for backward compatibility
   const PLATFORM_URLS = {};
-  Object.keys(PLATFORM_CONFIG).forEach(platform => {
+  Object.keys(PLATFORM_CONFIG).forEach((platform) => {
     PLATFORM_URLS[platform] = PLATFORM_CONFIG[platform].url;
   });
 
   /**
- * Generate a search URL for a given platform and query
- * @param {string} platform - The platform name
- * @param {string} query - The search query
- * @returns {string} The complete search URL
- */
+   * Generate a search URL for a given platform and query
+   * @param {string} platform - The platform name
+   * @param {string} query - The search query
+   * @returns {string} The complete search URL
+   */
   function getSearchUrl(platform, query) {
     const q = encodeURIComponent(query);
     return PLATFORM_URLS[platform] ? `${PLATFORM_URLS[platform]}${q}` : '';

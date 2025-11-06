@@ -22,7 +22,7 @@ if (typeof document !== 'undefined') {
      * Initialize platform buttons dynamically from PLATFORM_CONFIG
      */
     function initializeButtons() {
-      Object.keys(PLATFORM_CONFIG).forEach(platform => {
+      Object.keys(PLATFORM_CONFIG).forEach((platform) => {
         const button = document.getElementById(`search${platform}`);
         if (button) {
           button.addEventListener('click', () => processSearch(platform));
@@ -45,7 +45,11 @@ if (typeof document !== 'undefined') {
       // Close history dropdown when clicking outside
       document.addEventListener('click', (e) => {
         const historyDropdown = document.getElementById('historyDropdown');
-        if (historyDropdown && !queryInput.contains(e.target) && !historyDropdown.contains(e.target)) {
+        if (
+          historyDropdown &&
+          !queryInput.contains(e.target) &&
+          !historyDropdown.contains(e.target)
+        ) {
           hideHistoryDropdown();
         }
       });
@@ -68,31 +72,34 @@ if (typeof document !== 'undefined') {
           return;
         }
 
-        chrome.scripting.executeScript({
-          target: { tabId: tabs[0].id },
-          function: getSelectionText
-        }, (results) => {
-          if (chrome.runtime.lastError) {
-            console.error('Error executing script:', chrome.runtime.lastError);
-            showNotification('Could not access page content', 'error');
-            return;
+        chrome.scripting.executeScript(
+          {
+            target: { tabId: tabs[0].id },
+            function: getSelectionText
+          },
+          (results) => {
+            if (chrome.runtime.lastError) {
+              console.error('Error executing script:', chrome.runtime.lastError);
+              showNotification('Could not access page content', 'error');
+              return;
+            }
+
+            if (results && results.length > 0 && results[0].result) {
+              // Set the selected text in the form input
+              const queryField = document.getElementById('queryInput');
+              queryField.value = results[0].result;
+              queryField.focus();
+
+              // Save the selected platform
+              document.getElementById('platformInput').value = platform;
+
+              // Show platform-specific search tips
+              showSearchTips(platform);
+            } else {
+              showNotification('No text selected. Please select some text to search.', 'warning');
+            }
           }
-
-          if (results && results.length > 0 && results[0].result) {
-            // Set the selected text in the form input
-            const queryField = document.getElementById('queryInput');
-            queryField.value = results[0].result;
-            queryField.focus();
-
-            // Save the selected platform
-            document.getElementById('platformInput').value = platform;
-
-            // Show platform-specific search tips
-            showSearchTips(platform);
-          } else {
-            showNotification('No text selected. Please select some text to search.', 'warning');
-          }
-        });
+        );
       });
     }
 
@@ -243,7 +250,7 @@ if (typeof document !== 'undefined') {
           const historyDropdown = document.createElement('div');
           historyDropdown.id = 'historyDropdown';
 
-          history.forEach(item => {
+          history.forEach((item) => {
             const historyItem = document.createElement('div');
             historyItem.className = 'history-item';
             historyItem.innerHTML = `<span class="history-item-platform">${item.platform}:</span> ${item.query}`;
