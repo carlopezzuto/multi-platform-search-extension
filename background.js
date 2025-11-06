@@ -32,7 +32,7 @@ chrome.runtime.onInstalled.addListener(() => {
 /**
  * Handle context menu clicks
  */
-chrome.contextMenus.onClicked.addListener((info, tab) => {
+chrome.contextMenus.onClicked.addListener((info, _tab) => {
   try {
     const platform = info.menuItemId;
     const query = info.selectionText;
@@ -50,7 +50,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     const url = getSearchUrl(platform, query);
 
     if (url) {
-      chrome.tabs.create({ url }, (newTab) => {
+      chrome.tabs.create({ url }, (_newTab) => {
         if (chrome.runtime.lastError) {
           console.error('Error creating tab:', chrome.runtime.lastError);
         } else {

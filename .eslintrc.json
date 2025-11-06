@@ -43,6 +43,7 @@
     "chrome": "readonly",
     "PLATFORM_URLS": "readonly",
     "PLATFORM_CONFIG": "readonly",
-    "getSearchUrl": "readonly"
+    "getSearchUrl": "readonly",
+    "importScripts": "readonly"
   }
 }

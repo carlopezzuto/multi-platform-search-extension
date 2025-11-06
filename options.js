@@ -53,7 +53,9 @@ function renderPlatforms() {
     const isEnabled = currentSettings.enabledPlatforms.includes(platform);
     const config = PLATFORM_CONFIG[platform];
 
-    if (!config) return;
+    if (!config) {
+      return;
+    }
 
     const platformItem = document.createElement('div');
     platformItem.className = `platform-item ${isEnabled ? '' : 'disabled'}`;

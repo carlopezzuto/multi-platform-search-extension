@@ -91,7 +91,7 @@ describe('PLATFORM_CONFIG', () => {
   });
 
   test('each platform has required properties', () => {
-    Object.entries(PLATFORM_CONFIG).forEach(([platform, config]) => {
+    Object.entries(PLATFORM_CONFIG).forEach(([_platform, config]) => {
       expect(config).toHaveProperty('url');
       expect(config).toHaveProperty('tips');
       expect(config).toHaveProperty('icon');
