@@ -5,6 +5,12 @@ on:
     branches: [ main, develop, claude/* ]
   pull_request:
     branches: [ main, develop ]
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual build'
+        required: false
+        default: 'Manual build trigger'
 
 jobs:
   test:
