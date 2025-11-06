@@ -1,13 +1,14 @@
 {
   "manifest_version": 3,
-  "name": "Search Extension",
-  "version": "1.4",
-  "description": "Search selected text on different platforms",
+  "name": "Multi-Platform Search Extension",
+  "version": "2.0",
+  "description": "Search selected text across 13+ platforms with history, keyboard shortcuts, and advanced features",
   "permissions": [
     "activeTab",
     "tabs",
     "scripting",
-    "contextMenus"
+    "contextMenus",
+    "storage"
   ],
   "background": {
     "service_worker": "background.js"
@@ -17,6 +18,7 @@
     "default_title": "Search on Multiple Platforms",
     "default_icon": "icon.png"
   },
+  "options_page": "options.html",
   "icons": {
     "128": "icon.png"
   }

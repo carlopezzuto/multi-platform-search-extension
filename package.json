@@ -1,12 +1,33 @@
 {
   "name": "multi-platform-search-extension",
-  "version": "1.4.0",
-  "description": "Multi-platform search extension",
+  "version": "2.0.0",
+  "description": "Multi-platform search extension with 13+ platforms, history, keyboard shortcuts, and advanced features",
+  "author": "Enrico Heidelberg",
+  "license": "MIT",
   "devDependencies": {
-    "jest": "^29.7.0"
+    "jest": "^29.7.0",
+    "eslint": "^8.50.0",
+    "prettier": "^3.0.3"
   },
   "type": "commonjs",
   "scripts": {
-    "test": "jest"
-  }
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint *.js",
+    "lint:fix": "eslint *.js --fix",
+    "format": "prettier --write \"**/*.{js,json,css,html}\"",
+    "format:check": "prettier --check \"**/*.{js,json,css,html}\""
+  },
+  "keywords": [
+    "chrome-extension",
+    "search",
+    "multi-platform",
+    "linkedin",
+    "github",
+    "stackoverflow",
+    "twitter",
+    "reddit",
+    "youtube"
+  ]
 }
