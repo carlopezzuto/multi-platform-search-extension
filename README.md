@@ -190,11 +190,17 @@ cd multi-platform-search-extension
 # Install dependencies
 npm install
 
-# Run tests
+# Install Playwright browsers for E2E testing
+npm run playwright:install
+
+# Run unit tests
 npm test
 
-# Run tests in watch mode
-npm run test:watch
+# Run E2E tests
+npm run test:e2e
+
+# Run all tests (unit + E2E)
+npm run test:all
 
 # Check code quality
 npm run lint
@@ -205,8 +211,10 @@ npm run format
 
 ### Running Tests
 
+#### Unit Tests (Jest)
+
 ```bash
-# Run all tests
+# Run all unit tests
 npm test
 
 # Run with coverage
@@ -217,6 +225,43 @@ npm run test:watch
 ```
 
 Current test coverage: **90%+** with 150+ test cases
+
+#### E2E Tests (Playwright)
+
+**Note:** Chrome extension E2E tests require a display. On Linux servers without a display, use `xvfb`:
+
+```bash
+# Install Playwright browsers (first time only)
+npm run playwright:install
+
+# Run all E2E tests (Linux without display)
+xvfb-run --auto-servernum npm run test:e2e
+
+# Run all E2E tests (with display)
+npm run test:e2e
+
+# Run E2E tests in UI mode (interactive)
+npm run test:e2e:ui
+
+# Run E2E tests in headed mode (see browser)
+npm run test:e2e:headed
+
+# Run E2E tests in debug mode
+npm run test:e2e:debug
+
+# Run all tests (unit + E2E)
+npm run test:all
+```
+
+E2E tests cover:
+- Extension popup functionality (26 test cases)
+- Platform button clicks and search execution
+- Search form submission
+- Keyboard shortcuts (1-9, Enter, Escape)
+- Search history dropdown
+- Options page drag-and-drop
+- Settings persistence
+- Input validation and toast notifications
 
 ### Code Quality
 
@@ -241,6 +286,10 @@ multi-platform-search-extension/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml              # CI/CD pipeline
+├── tests/
+│   └── e2e/
+│       ├── popup.spec.js       # Playwright E2E tests for popup
+│       └── options.spec.js     # Playwright E2E tests for options
 ├── manifest.json               # Extension manifest (Manifest V3)
 ├── popup.html                  # Popup UI structure
 ├── popup.css                   # Popup styles
@@ -250,7 +299,8 @@ multi-platform-search-extension/
 ├── options.html                # Settings page UI
 ├── options.css                 # Settings page styles
 ├── options.js                  # Settings page logic
-├── popup.test.js               # Jest test suite
+├── popup.test.js               # Jest unit test suite
+├── playwright.config.js        # Playwright E2E configuration
 ├── package.json                # NPM configuration
 ├── .eslintrc.json              # ESLint configuration
 ├── .prettierrc.json            # Prettier configuration
