@@ -3,6 +3,8 @@
   "name": "Multi-Platform Search Extension",
   "version": "2.0",
   "description": "Search selected text across 13+ platforms with history, keyboard shortcuts, and advanced features",
+  "author": "Carlo Pezzuto (fork of original by Enrico Heidelberg)",
+  "homepage_url": "https://github.com/carlopezzuto/multi-platform-search-extension",
   "permissions": ["activeTab", "tabs", "scripting", "contextMenus", "storage"],
   "background": {
     "service_worker": "background.js"
